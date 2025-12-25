@@ -1,0 +1,291 @@
+import React, { useState } from 'react';
+import { 
+  Plus, 
+  Shield, 
+  EyeOff, 
+  ArrowUpRight, 
+  ArrowDownLeft, 
+  Settings, 
+  Bell,
+  Heart,
+  Zap,
+  Lock,
+  History,
+  X,
+  ChevronRight,
+  Check
+} from 'lucide-react';
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('wall');
+  const [showAddMenu, setShowAddMenu] = useState(false);
+  const [settleItem, setSettleItem] = useState(null);
+  const [settleStep, setSettleStep] = useState(1);
+
+  // Mock Data
+  const partner = { name: "Sarah", status: "Couples Mode" };
+  const equilibriumScore = +35;
+
+  const publicEntries = [
+    { id: 1, type: 'hard', title: 'Lunch @ Hawker Center', amount: -12.50, date: '2h ago', status: 'Active' },
+    { id: 2, type: 'soft', title: 'Saved my ass (PPT Help)', amount: '+1 Hero', date: 'Yesterday', status: 'Verified', category: 'Work' },
+    { id: 3, type: 'soft', title: 'Laundry Rescue', amount: '+1 Favor', date: '2 days ago', status: 'Verified', category: 'Home' },
+  ];
+
+  const vaultEntries = [
+    { id: 4, type: 'face', title: 'Silent Apology (Dinner)', amount: '+5 Face', date: '3h ago', status: 'Encrypted' },
+    { id: 5, type: 'spicy', title: 'Wild Card Reward', amount: 'Redeemable', date: 'Last Week', status: 'Locked' },
+    { id: 6, type: 'face', title: 'Covered for me (Landlord)', amount: '+10 Face', date: 'Oct 12', status: 'Verified' },
+  ];
+
+  const myCatalog = [
+    { id: 'c1', title: '30-min Foot Massage', icon: '🦶' },
+    { id: 'c2', title: 'Cook a Fancy Dinner', icon: '🍳' },
+    { id: 'c3', title: 'One Week of Trash Duty', icon: '🗑️' },
+    { id: 'c4', title: 'Spontaneous Adventure', icon: '🗺️' }
+  ];
+
+  const EntryCard = ({ entry, isVault }) => (
+    <div className={`p-5 mb-4 rounded-3xl border-2 transition-all group ${
+      isVault ? 'bg-gray-900 border-gray-800 text-white' : 'bg-white border-gray-100 shadow-sm'
+    }`}>
+      <div className="flex justify-between items-start mb-4">
+        <div className="flex items-center gap-3">
+          <div className={`p-2 rounded-xl ${isVault ? 'bg-red-900/30' : 'bg-blue-50'}`}>
+            {entry.type === 'hard' && <ArrowDownLeft className="text-red-500" size={20} />}
+            {entry.type === 'soft' && <Zap className="text-blue-500" size={20} />}
+            {entry.type === 'face' && <EyeOff className="text-red-400" size={20} />}
+            {entry.type === 'spicy' && <Heart className="text-pink-500" size={20} />}
+          </div>
+          <div>
+            <h4 className={`font-bold ${isVault ? 'text-white' : 'text-blue-900'}`}>{entry.title}</h4>
+            <p className="text-xs text-gray-400 font-medium uppercase tracking-widest">{entry.date}</p>
+          </div>
+        </div>
+        <div className="text-right">
+          <span className={`text-lg font-black ${
+            entry.amount.toString().includes('+') ? 'text-green-500' : 'text-red-500'
+          }`}>
+            {entry.amount}
+          </span>
+          <p className={`text-[10px] font-bold ${isVault ? 'text-blue-400' : 'text-gray-400'}`}>
+            {entry.status}
+          </p>
+        </div>
+      </div>
+      
+      {/* Settle Up Action */}
+      {entry.amount.toString().includes('-') && (
+        <button 
+          onClick={() => { setSettleItem(entry); setSettleStep(1); }}
+          className={`w-full py-3 rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all ${
+            isVault ? 'bg-white text-black hover:bg-gray-200' : 'bg-blue-900 text-white hover:bg-blue-800'
+          }`}
+        >
+          Settle Up <ChevronRight size={14} />
+        </button>
+      )}
+    </div>
+  );
+
+  const SettleModal = () => (
+    <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/60 backdrop-blur-sm px-4">
+        <div className="w-full max-w-md bg-white rounded-t-[3rem] p-8 animate-in slide-in-from-bottom duration-300">
+            <div className="flex justify-between items-center mb-8">
+                <h3 className="text-2xl font-black text-blue-900">Settle Up</h3>
+                <button onClick={() => setSettleItem(null)} className="p-2 bg-gray-100 rounded-full"><X size={20}/></button>
+            </div>
+
+            {settleStep === 1 && (
+                <div className="space-y-4">
+                    <p className="text-gray-500 font-medium mb-6 text-center">How do you want to repay Sarah for <br/><span className="text-blue-900 font-bold">"{settleItem.title}"</span>?</p>
+                    
+                    <button 
+                        onClick={() => setSettleStep(2)}
+                        className="w-full p-6 bg-blue-50 border-2 border-blue-100 rounded-3xl flex items-center gap-4 text-left group hover:border-blue-300 transition-all"
+                    >
+                        <div className="bg-white p-3 rounded-2xl shadow-sm group-hover:scale-110 transition-transform text-2xl">🎁</div>
+                        <div className="flex-1">
+                            <h4 className="font-black text-blue-900">Offer a Favor</h4>
+                            <p className="text-xs text-blue-600 font-bold uppercase tracking-tighter">Use your 555 Catalog</p>
+                        </div>
+                        <ChevronRight className="text-blue-300" />
+                    </button>
+
+                    <button className="w-full p-6 bg-gray-50 border-2 border-gray-100 rounded-3xl flex items-center gap-4 text-left group hover:border-gray-200 transition-all">
+                        <div className="bg-white p-3 rounded-2xl shadow-sm group-hover:scale-110 transition-transform text-2xl">💵</div>
+                        <div className="flex-1">
+                            <h4 className="font-black text-gray-900">Mark as Paid</h4>
+                            <p className="text-xs text-gray-500 font-bold uppercase tracking-tighter">Settled with Cash/App</p>
+                        </div>
+                        <ChevronRight className="text-gray-300" />
+                    </button>
+                </div>
+            )}
+
+            {settleStep === 2 && (
+                <div className="space-y-4 max-h-[60vh] overflow-y-auto">
+                    <p className="text-gray-400 text-xs font-bold uppercase tracking-widest text-center mb-4">Choose a Favor from your catalog</p>
+                    {myCatalog.map(favor => (
+                        <button 
+                            key={favor.id}
+                            onClick={() => setSettleStep(3)}
+                            className="w-full p-4 bg-white border-2 border-gray-100 rounded-2xl flex items-center gap-4 text-left hover:border-blue-900 transition-all"
+                        >
+                            <span className="text-2xl">{favor.icon}</span>
+                            <span className="font-bold text-blue-900">{favor.title}</span>
+                        </button>
+                    ))}
+                </div>
+            )}
+
+            {settleStep === 3 && (
+                <div className="text-center space-y-6 py-8">
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Check className="text-green-600" size={40} />
+                    </div>
+                    <h4 className="text-2xl font-black text-blue-900">Settlement Proposed!</h4>
+                    <p className="text-gray-500 leading-relaxed px-4">
+                        We've sent your offer to Sarah via WhatsApp. Once she acknowledges it, your debt will be cleared and your equilibrium will rebalance.
+                    </p>
+                    <button 
+                        onClick={() => setSettleItem(null)}
+                        className="w-full bg-blue-900 text-white py-4 rounded-2xl font-bold text-lg shadow-lg"
+                    >
+                        Back to Dashboard
+                    </button>
+                </div>
+            )}
+        </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-[#fdfbd4] font-sans pb-24 relative overflow-x-hidden">
+      {/* Settle Modal Overlay */}
+      {settleItem && <SettleModal />}
+
+      {/* Top Header */}
+      <header className="bg-white px-6 pt-8 pb-6 border-b border-gray-100 rounded-b-[3rem] shadow-sm">
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center gap-3">
+            <div className="bg-red-600 text-white font-black text-xl px-2 py-0.5 rounded shadow-md transform -rotate-3">555</div>
+            <div>
+              <h1 className="text-lg font-black text-blue-900 leading-none">With {partner.name}</h1>
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{partner.status}</p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <button className="p-2 bg-gray-50 rounded-full text-gray-400"><Bell size={20} /></button>
+            <button className="p-2 bg-gray-50 rounded-full text-gray-400"><Settings size={20} /></button>
+          </div>
+        </div>
+
+        {/* Equilibrium Scale */}
+        <div className="bg-blue-900 rounded-[2.5rem] p-6 text-white relative overflow-hidden">
+          <div className="relative z-10">
+            <div className="flex justify-between items-end mb-4">
+              <div>
+                <p className="text-xs font-bold text-blue-300 uppercase tracking-widest mb-1">Equilibrium</p>
+                <h2 className="text-3xl font-black">+{equilibriumScore}</h2>
+              </div>
+              <span className="bg-green-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Hero Zone 🏆</span>
+            </div>
+            
+            <div className="relative h-2 bg-white/10 rounded-full mb-2">
+              <div 
+                className="absolute h-full w-4 bg-white shadow-[0_0_15px_#fff] rounded-full top-0 -translate-x-1/2 transition-all duration-700" 
+                style={{ left: `${50 + (equilibriumScore / 2)}%` }}
+              />
+            </div>
+            <div className="flex justify-between text-[8px] font-bold text-blue-400 uppercase tracking-widest">
+                <span>The Taker</span>
+                <span>Perfect Balance</span>
+                <span>The Giver</span>
+            </div>
+          </div>
+          <div className="absolute inset-0 opacity-10 pointer-events-none" 
+               style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+        </div>
+      </header>
+
+      {/* Tab Switcher */}
+      <div className="flex p-4 gap-4">
+        <button 
+          onClick={() => setActiveTab('wall')}
+          className={`flex-1 py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${
+            activeTab === 'wall' ? 'bg-blue-900 text-white shadow-lg' : 'bg-white text-gray-400 border-2 border-gray-50'
+          }`}
+        >
+          <Zap size={18} /> Public Wall
+        </button>
+        <button 
+          onClick={() => setActiveTab('vault')}
+          className={`flex-1 py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${
+            activeTab === 'vault' ? 'bg-gray-900 text-white shadow-lg' : 'bg-white text-gray-400 border-2 border-gray-50'
+          }`}
+        >
+          <Lock size={18} /> The Vault
+        </button>
+      </div>
+
+      {/* Entries Feed */}
+      <main className="px-4">
+        <div className="mb-4 px-2 flex justify-between items-center">
+          <h3 className="font-black text-blue-900 uppercase tracking-widest text-xs">Recent History</h3>
+          <button className="text-[10px] font-bold text-blue-500 flex items-center gap-1">
+            <History size={12} /> View All
+          </button>
+        </div>
+
+        {activeTab === 'wall' ? (
+          <div>
+            {publicEntries.map(e => <EntryCard key={e.id} entry={e} isVault={false} />)}
+          </div>
+        ) : (
+          <div>
+            <div className="bg-red-900/10 border border-red-900/20 p-4 rounded-2xl mb-6 flex items-center gap-4">
+                <Shield className="text-red-500" size={24} />
+                <p className="text-xs text-red-900 font-bold leading-tight">
+                    End-to-end encryption active. Private entries stay private.
+                </p>
+            </div>
+            {vaultEntries.map(e => <EntryCard key={e.id} entry={e} isVault={true} />)}
+          </div>
+        )}
+      </main>
+
+      {/* FAB */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+        {showAddMenu && (
+          <div className="bg-white p-2 rounded-3xl shadow-2xl mb-4 border-2 border-gray-50 animate-in slide-in-from-bottom-4 flex gap-2">
+            <button className="p-4 bg-blue-50 rounded-2xl text-blue-900 hover:bg-blue-100 transition-colors">
+                <ArrowUpRight size={24} />
+                <span className="block text-[8px] font-black mt-1 uppercase">I Owe</span>
+            </button>
+            <button className="p-4 bg-red-50 rounded-2xl text-red-600 hover:bg-red-100 transition-colors">
+                <ArrowDownLeft size={24} />
+                <span className="block text-[8px] font-black mt-1 uppercase">They Owe</span>
+            </button>
+            <button className="p-4 bg-gray-900 rounded-2xl text-white hover:bg-black transition-colors">
+                <EyeOff size={24} />
+                <span className="block text-[8px] font-black mt-1 uppercase">Face-Save</span>
+            </button>
+          </div>
+        )}
+        <button 
+          onClick={() => setShowAddMenu(!showAddMenu)}
+          className={`w-16 h-16 rounded-full flex items-center justify-center text-white shadow-2xl transition-all active:scale-90 ${
+            showAddMenu ? 'bg-red-500 rotate-45' : 'bg-blue-900'
+          }`}
+        >
+          <Plus size={32} />
+        </button>
+      </div>
+
+      <div className="fixed top-0 left-0 w-1 h-full bg-red-500/20 pointer-events-none" />
+    </div>
+  );
+};
+
+export default App;

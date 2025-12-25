@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>555 - Digitizing the Social Contract</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --notebook-yellow: #fdfbd4;
+            --notebook-blue: #a5d8ff;
+            --notebook-red: #ff8787;
+            --555-blue: #1e3a8a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--notebook-yellow);
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+        .notebook-lines {
+            background-image: linear-gradient(var(--notebook-blue) 1px, transparent 1px);
+            background-size: 100% 2.5rem;
+        }
+        .red-margin {
+            border-left: 2px solid var(--notebook-red);
+        }
+        .handwriting {
+            font-family: 'Courier Prime', monospace;
+        }
+        .equilibrium-scale {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .vault-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #000000 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Nav -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-6xl mx-auto p-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-red-600 text-white font-black text-2xl px-2 py-0.5 rounded shadow-sm transform -rotate-2">555</div>
+                <span class="font-bold text-lg text-blue-900">Book</span>
+            </div>
+            <div class="hidden md:flex gap-8 font-semibold text-gray-600">
+                <a href="#equilibrium" class="hover:text-blue-900">The Balance</a>
+                <a href="#vault" class="hover:text-blue-900">The Vault</a>
+                <a href="#personas" class="hover:text-blue-900">Personas</a>
+            </div>
+            <button class="bg-blue-900 text-white px-5 py-2 rounded-full font-bold text-sm">Join Beta</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+            <span class="bg-red-100 text-red-600 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-widest">A Relationship Saver</span>
+            <h1 class="text-6xl font-black text-blue-900 leading-tight">
+                Don't let favors turn into <span class="text-red-600 italic">fights.</span>
+            </h1>
+            <p class="text-xl text-gray-700 leading-relaxed">
+                The digital 555 book for couples, roommates, and real ones. Track the invisible efforts that keep your relationships alive.
+            </p>
+            <div class="pt-4">
+                <button class="bg-blue-900 text-white px-10 py-4 rounded-2xl text-lg font-black shadow-xl hover:-translate-y-1 transition">Claim Your Username</button>
+            </div>
+        </div>
+
+        <!-- Interactive Notebook -->
+        <div class="bg-white shadow-2xl rounded-3xl p-8 red-margin notebook-lines border border-gray-100">
+            <div class="flex justify-between items-center mb-6 border-b-2 border-blue-900 pb-2">
+                <h3 class="text-2xl font-bold text-blue-900 uppercase tracking-tighter">My Ledger</h3>
+                <span class="text-sm font-bold text-red-400 handwriting">Page 42</span>
+            </div>
+            
+            <div class="space-y-6 handwriting text-lg">
+                <div class="flex justify-between group cursor-help">
+                    <span>Picked up Dry Cleaning</span>
+                    <span class="text-green-600 font-bold">+1 Fav</span>
+                </div>
+                <div class="flex justify-between text-gray-400 italic">
+                    <span>(Awaiting Jason's Acknowledge...)</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Saved my ass (Late for family dinner)</span>
+                    <span class="text-red-600 font-bold">-5 Face</span>
+                </div>
+                <div class="h-24"></div>
+                <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200 text-sm italic text-yellow-800">
+                    "I really owe you for covering for me with Auntie. You're a hero."
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Equilibrium Tool (The Math) -->
+    <section id="equilibrium" class="bg-blue-900 text-white py-24 overflow-hidden relative">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-black mb-6">The Relationship Equilibrium</h2>
+            <p class="text-blue-200 text-lg mb-12 max-w-2xl mx-auto">Our weighted algorithm balances "Hard Debt" (money) and "Soft Debt" (favors) to ensure nobody feels taken advantage of.</p>
+            
+            <div class="bg-white/5 p-8 md:p-16 rounded-[3rem] border border-white/10 backdrop-blur-xl">
+                <div class="flex justify-between mb-6 font-black text-xs uppercase tracking-widest text-blue-300">
+                    <span>I'm Giving More</span>
+                    <span>Perfect Sync</span>
+                    <span>I'm Taking More</span>
+                </div>
+                <div class="relative h-6 bg-white/10 rounded-full mb-10 border border-white/10">
+                    <div id="balanceSlider" class="absolute h-full w-4 bg-white shadow-[0_0_30px_#fff] rounded-full -translate-x-1/2 equilibrium-scale" style="left: 50%;"></div>
+                </div>
+                
+                <h3 id="statusText" class="text-3xl font-bold mb-10 handwriting">"Perfectly Balanced."</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <button onclick="updateBalance(-15)" class="bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-bold transition border border-white/5">I did a Favor</button>
+                    <button onclick="updateBalance(-30)" class="bg-green-500/20 hover:bg-green-500/40 py-4 rounded-2xl font-bold transition border border-green-500/20">I saved their ass</button>
+                    <button onclick="updateBalance(20)" class="bg-red-500/20 hover:bg-red-500/40 py-4 rounded-2xl font-bold transition border border-red-500/20">They paid for me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Vault Section -->
+    <section id="vault" class="py-24 vault-gradient text-white">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 relative">
+                <div class="bg-white/10 p-10 rounded-3xl border border-white/20 backdrop-blur-md relative overflow-hidden">
+                    <div class="absolute top-4 right-4 text-xs text-blue-300 font-mono tracking-widest">E2E ENCRYPTED</div>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 border-b border-white/10 pb-4">
+                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center font-bold">J</div>
+                            <div class="flex-1">
+                                <div class="h-2 w-24 bg-white/20 rounded"></div>
+                                <div class="h-4 w-40 bg-white/40 rounded mt-2"></div>
+                            </div>
+                            <div class="text-blue-400">🔒</div>
+                        </div>
+                        <div class="text-sm font-mono text-blue-200">
+                            [CIPHER_BLOCK_01: Xj92k-Lms91-Pq02]
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/10 italic text-sm">
+                            Only you and your partner hold the keys to this ledger. Perfect for spicy rewards and sensitive moments.
+                        </div>
+                    </div>
+                </div>
+                <!-- Float elements -->
+                <div class="absolute -top-6 -left-6 w-20 h-20 bg-red-600 rounded-2xl -rotate-12 flex items-center justify-center text-3xl shadow-2xl">🔥</div>
+            </div>
+            <div class="order-1 md:order-2 space-y-8">
+                <h2 class="text-5xl font-black leading-tight">Private Ledgers: <br><span class="text-blue-400">The Vault</span></h2>
+                <p class="text-xl text-blue-100">Not all favors belong on a public wall. The Vault uses end-to-end encryption for intimate couples and sensitive face-saving gestures.</p>
+                <ul class="space-y-4 font-bold text-lg">
+                    <li class="flex items-center gap-3"><span class="text-blue-400">✓</span> Playful "Sex-citing" rewards</li>
+                    <li class="flex items-center gap-3"><span class="text-blue-400">✓</span> Private emotional support</li>
+                    <li class="flex items-center gap-3"><span class="text-blue-400">✓</span> Silent "Face-Saving" entries</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Persona Showcase -->
+    <section id="personas" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 text-center mb-16">
+            <h2 class="text-4xl font-black text-blue-900 mb-4">Choose Your 555 Persona</h2>
+            <p class="text-gray-600">Pre-built favor catalogs for every stage of life.</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+            <!-- Persona 1 -->
+            <div class="group p-8 rounded-3xl border-2 border-gray-100 hover:border-blue-900 transition-all cursor-pointer">
+                <div class="text-5xl mb-6 group-hover:scale-110 transition">🎓</div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-4">The Roommate</h3>
+                <ul class="text-left space-y-3 text-gray-600 text-sm">
+                    <li>• "Dishes Exorcism"</li>
+                    <li>• "Library Seat Squatter"</li>
+                    <li>• "Laundry Rescue Mission"</li>
+                </ul>
+            </div>
+            <!-- Persona 2 -->
+            <div class="group p-8 rounded-3xl border-2 border-blue-900 bg-blue-50 transition-all cursor-pointer shadow-xl">
+                <div class="text-5xl mb-6 group-hover:scale-110 transition">🌶️</div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-4">Young Couples</h3>
+                <ul class="text-left space-y-3 text-gray-600 text-sm">
+                    <li>• "Spontaneous Adventure Card"</li>
+                    <li>• "The Wild Card Reward"</li>
+                    <li>• "Date Night Dictator"</li>
+                </ul>
+                <div class="mt-6 text-xs font-bold text-blue-900 uppercase">Vault Enabled 🔒</div>
+            </div>
+            <!-- Persona 3 -->
+            <div class="group p-8 rounded-3xl border-2 border-gray-100 hover:border-blue-900 transition-all cursor-pointer">
+                <div class="text-5xl mb-6 group-hover:scale-110 transition">🍻</div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-4">The Real Ones</h3>
+                <ul class="text-left space-y-3 text-gray-600 text-sm">
+                    <li>• "Phone Guard Protocol"</li>
+                    <li>• "Designated Hero (Safe Drive)"</li>
+                    <li>• "Ultimate Wingman Assist"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-20 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center">
+            <div class="bg-red-600 text-white font-black text-3xl px-3 py-1 rounded shadow-lg transform -rotate-3 mb-6">555</div>
+            <p class="text-gray-500 font-bold mb-8">Digitizing trust since 2025.</p>
+            <div class="flex gap-10 text-sm font-bold text-blue-900">
+                <a href="#">The Roti Man Story</a>
+                <a href="#">API Docs</a>
+                <a href="#">Security</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let balance = 50;
+
+        function updateBalance(val) {
+            balance += val;
+            if (balance > 100) balance = 90;
+            if (balance < 0) balance = 10;
+            
+            const slider = document.getElementById('balanceSlider');
+            const status = document.getElementById('statusText');
+            
+            slider.style.left = balance + '%';
+            
+            if (balance < 40) {
+                status.innerText = '"You\'re a Hero! They owe you."';
+                status.style.color = '#059669';
+            } else if (balance > 60) {
+                status.innerText = '"Time to pay it back!"';
+                status.style.color = '#dc2626';
+            } else {
+                status.innerText = '"Perfectly Balanced."';
+                status.style.color = '#3b82f6';
+            }
+        }
+    </script>
+</body>
+</html>
