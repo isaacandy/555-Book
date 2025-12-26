@@ -421,4 +421,4 @@ export default function App() {
       {currentView === 'dashboard' && <DashboardApp onLogout={() => setCurrentView('landing')} />}
     </div>
   );
-}
+} 
