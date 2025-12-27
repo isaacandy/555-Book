@@ -1,4 +1,4 @@
-# **555: The Social Ledger for Modern Gratitude**
+# ![Project screenshot](public/images/logo555.png) **555: The Social Ledger for Modern Gratitude**  
 
 ## **1\. The Vision & Story**
 
