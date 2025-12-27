@@ -36,7 +36,7 @@ import {
 } from 'lucide-react';
 
 /** * 1. LANDING PAGE COMPONENT 
- * A high-fidelity front door featuring the legacy story, algorithm demo, and the deep-dive Investor/Manual sections.
+ * A comprehensive front door with the Roti Man legacy, Investor Center, and Official Manual.
  */
 const LandingPage = ({ onStart }) => {
   const [balance, setBalance] = useState(50);
@@ -65,7 +65,7 @@ const LandingPage = ({ onStart }) => {
 
   return (
     <div className="min-h-screen bg-[#fdfbd4] text-[#1a1a1a] selection:bg-red-200">
-      {/* Nav */}
+      {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-6xl mx-auto p-4 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => showInternalView('home')}>
@@ -83,10 +83,10 @@ const LandingPage = ({ onStart }) => {
 
       {currentView === 'home' && (
         <>
-          {/* Hero */}
+          {/* Hero Section */}
           <header className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <span className="bg-red-100 text-red-600 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-widest">Digitizing Social Capital</span>
+              <span className="bg-red-100 text-red-600 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-widest tracking-widest">A Relationship Saver</span>
               <h1 className="text-6xl font-black text-blue-900 leading-tight tracking-tighter">
                 Track the invisible <br />effort of <span className="text-red-600 italic">love.</span>
               </h1>
@@ -99,7 +99,7 @@ const LandingPage = ({ onStart }) => {
               </div>
             </div>
 
-            {/* Notebook Component */}
+            {/* Notebook Interactive Demo */}
             <div className="bg-white shadow-2xl rounded-3xl p-8 border-l-[2px] border-[#ff8787] border border-gray-100 relative overflow-hidden" style={{ backgroundImage: 'linear-gradient(#a5d8ff 1px, transparent 1px)', backgroundSize: '100% 2.5rem' }}>
               <div className="flex justify-between items-center mb-6 border-b-2 border-blue-900 pb-2">
                 <h3 className="text-2xl font-bold text-blue-900 uppercase tracking-tighter">Live Ledger</h3>
@@ -107,11 +107,11 @@ const LandingPage = ({ onStart }) => {
               </div>
               <div className="space-y-6 font-mono text-lg text-blue-900">
                 <div className="flex justify-between items-center">
-                  <span>📢 Grocery Run (Week 4)</span>
+                  <span>📢 Picked up Groceries</span>
                   <span className="text-green-600 font-bold">+1 Fav</span>
                 </div>
                 <div className="flex justify-between items-center bg-blue-50/50 p-2 rounded-lg border border-blue-100">
-                  <span className="flex items-center gap-2"><Lock size={16}/> Saved Face (Work PPT)</span>
+                  <span className="flex items-center gap-2"><Lock size={16}/> Saved Face (Late to Dinner)</span>
                   <span className="text-red-600 font-bold">-5 Face</span>
                 </div>
                 <div className="h-12"></div>
@@ -122,16 +122,16 @@ const LandingPage = ({ onStart }) => {
             </div>
           </header>
 
-          {/* Equilibrium Section */}
+          {/* Equilibrium Algorithm Section */}
           <section id="equilibrium" className="bg-blue-900 text-white py-24 overflow-hidden relative">
             <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
               <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tighter">The Balance Scale</h2>
-              <p className="text-blue-200 mb-12 text-lg">Banks track money. 555 tracks the "Social Capital" that actually keeps relationships together.</p>
-              <div className="bg-white/5 p-8 md:p-16 rounded-[3rem] border border-white/10 backdrop-blur-xl">
+              <p className="text-blue-200 mb-12 text-lg">Money is simple. Trust is complex. Our algorithm treats them as one unified currency.</p>
+              <div className="bg-white/5 p-8 md:p-16 rounded-[3rem] border border-white/10 backdrop-blur-xl shadow-2xl">
                 <div className="flex justify-between mb-6 font-black text-[10px] uppercase tracking-[0.2em] text-blue-300">
-                  <span>Giving Much More</span>
-                  <span>Perfect Sync</span>
-                  <span>Taking Much More</span>
+                  <span>Giver Mode</span>
+                  <span>Relationship Sync</span>
+                  <span>Debtor Mode</span>
                 </div>
                 <div className="relative h-6 bg-white/10 rounded-full mb-10 border border-white/10">
                   <div className="absolute h-full w-4 bg-white shadow-[0_0_30px_#fff] rounded-full -translate-x-1/2 transition-all duration-500" style={{ left: `${balance}%` }}></div>
@@ -146,7 +146,7 @@ const LandingPage = ({ onStart }) => {
             </div>
           </section>
 
-          {/* Vault Section */}
+          {/* Vault & Privacy Section */}
           <section id="vault" className="py-24 bg-gradient-to-br from-blue-900 to-black text-white overflow-hidden">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1 relative">
@@ -162,8 +162,8 @@ const LandingPage = ({ onStart }) => {
                       </div>
                       <div className="text-red-400"><ShieldCheck size={24} /></div>
                     </div>
-                    <p className="p-4 bg-white/5 rounded-xl border border-white/10 italic text-sm text-blue-100">
-                      "Silent entries" are only visible to you and your partner. Encrypted on your device, decrypted on theirs.
+                    <p className="p-4 bg-white/5 rounded-xl border border-white/10 italic text-sm text-blue-100 leading-relaxed">
+                      "Silent entries" are only visible to you and your partner. Encrypted on your device, decrypted on theirs. No servers can see your intimacy.
                     </p>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ const LandingPage = ({ onStart }) => {
                 <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-2xl shadow-xl">🤐</div>
               </div>
               <div className="order-1 md:order-2 space-y-8">
-                <h2 className="text-5xl font-black leading-tight uppercase tracking-tighter">Saving Face: <br /><span className="text-red-500">The Private Vault</span></h2>
+                <h2 className="text-5xl font-black leading-tight uppercase tracking-tighter">Saving Face: <br /><span className="text-red-500 underline decoration-white decoration-4 underline-offset-8">The Private Vault</span></h2>
                 <p className="text-xl text-blue-100 font-light leading-relaxed">Not every act of kindness needs a public shout-out. Some of the most important favors happen behind closed doors. The Vault keeps your intimacy and your pride protected with client-side encryption.</p>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
@@ -187,11 +187,11 @@ const LandingPage = ({ onStart }) => {
             </div>
           </section>
 
-          {/* Personas Section */}
+          {/* Personas Selection Grid */}
           <section className="py-24 bg-white">
             <div className="max-w-6xl mx-auto px-6 text-center mb-16 uppercase">
               <h2 className="text-4xl font-black text-blue-900 mb-4 tracking-tight">The 555 Personas</h2>
-              <p className="text-gray-600 text-xs font-bold tracking-widest">Tailored catalogs for every type of social bond.</p>
+              <p className="text-gray-600 text-xs font-bold tracking-widest">Specialized favor catalogs for every type of social bond.</p>
             </div>
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8 text-center">
               {[
@@ -199,14 +199,14 @@ const LandingPage = ({ onStart }) => {
                 { name: 'Young Couple', icon: '🌶️', favor: 'Silent Apology', reward: 'Massage Protocol' },
                 { name: 'The Real Ones', icon: '🍻', favor: 'Phone Guard', reward: 'Designated Hero' }
               ].map((p, i) => (
-                <div key={i} className={`group p-8 rounded-3xl border-2 transition-all cursor-pointer ${i === 1 ? 'border-blue-900 bg-blue-50 shadow-xl' : 'border-gray-100 hover:border-blue-900'}`}>
+                <div key={i} className={`group p-8 rounded-3xl border-2 transition-all cursor-pointer ${i === 1 ? 'border-blue-900 bg-blue-50 shadow-xl scale-105' : 'border-gray-100 hover:border-blue-900'}`}>
                   <div className="text-5xl mb-6">{p.icon}</div>
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 uppercase tracking-tighter">{p.name}</h3>
                   <ul className="text-left space-y-3 text-gray-500 text-sm font-mono">
                     <li>• {p.favor}</li>
                     <li>• {p.reward}</li>
                   </ul>
-                  {i === 1 && <div className="mt-6 text-xs font-black text-blue-900 uppercase flex items-center justify-center gap-1"><Lock size={10}/> Vault Enabled</div>}
+                  {i === 1 && <div className="mt-6 text-[10px] font-black text-blue-900 uppercase flex items-center justify-center gap-1 opacity-60"><Lock size={10}/> Vault Active</div>}
                 </div>
               ))}
             </div>
@@ -227,24 +227,24 @@ const LandingPage = ({ onStart }) => {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-12">
-                {/* Glossary Sidebar */}
+                {/* Visual Glossary Sidebar */}
                 <div className="lg:col-span-1 space-y-8">
-                    <div className="bg-blue-50 p-6 rounded-3xl border border-blue-100">
+                    <div className="bg-blue-50 p-8 rounded-[2.5rem] border border-blue-100">
                         <h3 className="font-black text-blue-900 uppercase text-xs tracking-[0.2em] mb-6 border-b border-blue-200 pb-2">Visual Glossary</h3>
-                        <div className="space-y-5 font-mono text-sm text-blue-900">
-                            <div className="flex items-center gap-3"><div className="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center shadow-sm"><Zap size={14}/></div> <span>Represents a Favor Entry.</span></div>
-                            <div className="flex items-center gap-3"><div className="w-8 h-8 rounded-lg bg-red-600 text-white flex items-center justify-center shadow-sm"><ArrowDownLeft size={14}/></div> <span>Indicates Cash/Hard Debt.</span></div>
-                            <div className="flex items-center gap-3"><div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center shadow-sm"><EyeOff size={14}/></div> <span>Silent "Face-Save" Credit.</span></div>
-                            <div className="flex items-center gap-3"><div className="w-8 h-8 rounded-lg bg-green-500 text-white flex items-center justify-center shadow-sm"><Check size={14}/></div> <span>Verified Handshake.</span></div>
+                        <div className="space-y-6 font-mono text-sm text-blue-900">
+                            <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-xl bg-blue-900 text-white flex items-center justify-center shadow-md"><Zap size={16}/></div> <div><strong>Favor Entry:</strong><br/><span className="text-[10px] text-gray-500">Soft capital tracking.</span></div></div>
+                            <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shadow-md"><ArrowDownLeft size={16}/></div> <div><strong>Cash Debt:</strong><br/><span className="text-[10px] text-gray-500">Hard currency tracking.</span></div></div>
+                            <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center shadow-md"><EyeOff size={16}/></div> <div><strong>Face-Save:</strong><br/><span className="text-[10px] text-gray-500">Private Vault credit.</span></div></div>
+                            <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-xl bg-green-500 text-white flex items-center justify-center shadow-md"><Check size={16}/></div> <div><strong>Verified:</strong><br/><span className="text-[10px] text-gray-500">Acknowledged entry.</span></div></div>
                         </div>
                     </div>
-                    <div className="p-6 border-2 border-dashed border-gray-200 rounded-3xl space-y-3">
+                    <div className="p-8 border-2 border-dashed border-gray-200 rounded-[2.5rem] space-y-3">
                         <h4 className="font-black text-gray-400 uppercase text-[10px] tracking-[0.3em]">Code of Conduct</h4>
-                        <p className="text-xs text-gray-500 leading-relaxed italic">"Trust is the currency. Any debt must be acknowledged by the debtor before the equilibrium scales adjust."</p>
+                        <p className="text-xs text-gray-500 leading-relaxed italic">"Trust is the currency. Any debt must be acknowledged by the debtor before the equilibrium scales adjust. No forced entries allowed."</p>
                     </div>
                 </div>
 
-                {/* Main Content */}
+                {/* Main Instruction Body */}
                 <div className="lg:col-span-2 space-y-16 font-mono text-blue-900 text-lg leading-relaxed">
                     <section>
                         <h2 className="text-2xl font-black mb-6 flex items-center gap-4 underline decoration-red-500 underline-offset-8 decoration-4">01. THE HANDSHAKE</h2>
@@ -253,24 +253,22 @@ const LandingPage = ({ onStart }) => {
                     
                     <section>
                         <h2 className="text-2xl font-black mb-6 flex items-center gap-4 underline decoration-red-500 underline-offset-8 decoration-4">02. LOGGING ENTRIES</h2>
-                        <div className="space-y-4">
-                            <p className="text-base text-gray-700">Use the floating <strong>(+) button</strong>. <br/> • <strong>I Owe:</strong> Logs a debt you have taken on. <br/> • <strong>They Owe:</strong> Logs a favor or payment you provided. <br/> • <strong>Face-Save:</strong> Strictly private entries for "invisible effort."</p>
-                        </div>
+                        <p className="text-base text-gray-700">Use the floating <strong>(+) button</strong> in the dashboard. <br/> • <strong>I Owe:</strong> Logs a debt you have taken on. <br/> • <strong>They Owe:</strong> Logs a favor or payment you provided. <br/> • <strong>Face-Save:</strong> Strictly private entries for "invisible effort." Entries stay pending until the other party acknowledges them.</p>
                     </section>
 
-                    <section className="bg-gray-900 text-white p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-4 opacity-10"><Shield size={100}/></div>
+                    <section className="bg-gray-900 text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-4 opacity-10"><Shield size={120}/></div>
                         <h2 className="text-2xl font-black mb-6 uppercase tracking-tighter text-red-500">03. THE PRIVATE VAULT</h2>
-                        <p className="text-sm text-blue-100 mb-6 leading-relaxed">The Vault is for your most personal credits. When you quietly fix a partner's mistake or perform a task they'd find embarrassing to acknowledge publicly, use Face-Saving mode. These entries are encrypted locally—not even our developers can see them.</p>
+                        <p className="text-sm text-blue-100 mb-6 leading-relaxed">The Vault is for your most personal credits. When you quietly fix a partner's mistake or perform a task they'd find embarrassing to acknowledge publicly, use Face-Saving mode. These entries use client-side AES encryption. They do not appear on public walls or shared summary reports.</p>
                         <div className="flex items-center gap-3 text-[10px] font-black tracking-[0.2em] uppercase text-blue-400">
                             <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-                            Secure Session Active
+                            Secure Session | E2EE Active
                         </div>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 underline decoration-red-500 underline-offset-8 decoration-4">04. SETTLING UP</h2>
-                        <p className="text-base text-gray-700">Balance the scales by finding a negative entry in your activity and tapping <strong>"Settle Up."</strong> You can choose to mark as "Cash Paid" or <strong>"Propose a Favor"</strong> from your pre-built catalog. Once accepted, your HUD resets.</p>
+                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 underline decoration-red-500 underline-offset-8 decoration-4">04. THE MARKETPLACE</h2>
+                        <p className="text-base text-gray-700">If you cannot fulfill a favor, you can substitute it with a **Marketplace Gift Card**. This allows you to settle a "Soft Debt" with a "Hard Asset" (like a Coffee or Spa voucher) from our partner network. 555 takes a small commission on these transactions.</p>
                     </section>
                 </div>
             </div>
@@ -285,7 +283,7 @@ const LandingPage = ({ onStart }) => {
           </button>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Thesis Sidebar */}
+            {/* Thesis Sidebar / Market Metrics */}
             <div className="md:col-span-1 space-y-6">
                 <div className="bg-blue-900 text-white p-8 rounded-[3rem] shadow-2xl relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform"><Target size={160} /></div>
@@ -294,7 +292,7 @@ const LandingPage = ({ onStart }) => {
                     <div className="space-y-6">
                         <div className="border-t border-white/10 pt-4">
                             <p className="text-xs text-blue-400 uppercase font-bold mb-2 tracking-widest">Competitive Moat</p>
-                            <p className="font-semibold text-sm">Nostalgic Branding + Client-Side E2EE Encryption.</p>
+                            <p className="font-semibold text-sm">Cultural Nostalgia + Localized "Thank You" Economics.</p>
                         </div>
                         <div className="border-t border-white/10 pt-4">
                             <p className="text-xs text-blue-400 uppercase font-bold mb-2 tracking-widest">Revenue Roadmap</p>
@@ -306,25 +304,25 @@ const LandingPage = ({ onStart }) => {
                 <div className="bg-white p-8 rounded-[3rem] border border-gray-100 shadow-sm space-y-8">
                     <div>
                         <h3 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2"><BarChart3 size={14}/> Key Market Metrics</h3>
-                        <div className="space-y-6">
+                        <div className="space-y-8">
                             <div className="flex items-center gap-4">
-                                <div className="bg-red-50 p-3 rounded-2xl"><Users2 className="text-red-500" size={20}/></div>
-                                <div><p className="font-black text-blue-900">150M+</p><p className="text-[10px] text-gray-500 uppercase tracking-tighter">Target Pairs (SEA/ASIA)</p></div>
+                                <div className="bg-red-50 p-4 rounded-2xl"><Users2 className="text-red-500" size={24}/></div>
+                                <div><p className="text-2xl font-black text-blue-900 leading-none">150M+</p><p className="text-[10px] text-gray-500 uppercase font-bold mt-1">Target Pairs (SEA/ASIA)</p></div>
                             </div>
                             <div className="flex items-center gap-4">
-                                <div className="bg-blue-50 p-3 rounded-2xl"><Coins className="text-blue-500" size={20}/></div>
-                                <div><p className="font-black text-blue-900">$12.4B</p><p className="text-[10px] text-gray-500 uppercase tracking-tighter">Untracked Social Capital</p></div>
+                                <div className="bg-blue-50 p-4 rounded-2xl"><Coins className="text-blue-500" size={24}/></div>
+                                <div><p className="text-2xl font-black text-blue-900 leading-none">$12.4B</p><p className="text-[10px] text-gray-500 uppercase font-bold mt-1">Untracked Social Capital</p></div>
                             </div>
                         </div>
                     </div>
                     <div className="pt-6 border-t border-gray-100 text-center">
-                        <p className="text-[10px] font-bold text-blue-900 uppercase tracking-[0.2em] mb-1">Status</p>
-                        <p className="text-xl font-black text-blue-900 uppercase tracking-tighter italic">Phase: Seed</p>
+                        <p className="text-[10px] font-bold text-blue-900 uppercase tracking-[0.2em] mb-1">Funding Phase</p>
+                        <p className="text-2xl font-black text-blue-900 uppercase tracking-tighter italic">Phase: Pre-Seed</p>
                     </div>
                 </div>
             </div>
 
-            {/* Deck Content */}
+            {/* Comprehensive Pitch Deck Content */}
             <div className="md:col-span-2 bg-white rounded-[3rem] shadow-xl p-10 md:p-14 border-l-[2px] border-[#ff8787] border border-gray-100" style={{ backgroundImage: 'linear-gradient(#a5d8ff 1px, transparent 1px)', backgroundSize: '100% 2.5rem' }}>
               <div className="flex justify-between items-start mb-12 border-b-4 border-red-500 pb-4">
                 <h1 className="text-4xl md:text-5xl font-black text-blue-900 uppercase tracking-tighter leading-none">Corporate Pitch</h1>
@@ -337,35 +335,40 @@ const LandingPage = ({ onStart }) => {
               <div className="space-y-16 font-mono text-blue-900 text-lg leading-relaxed">
                 <section>
                     <h2 className="text-2xl font-black mb-6 uppercase flex items-center gap-4 underline decoration-red-500 decoration-4">01. THE PROBLEM</h2>
-                    <p className="text-gray-700 text-base">Modern financial friction is just the tip of the iceberg. 65% of relationship burnout stems from an unmeasured imbalance of "emotional labor." Banks track hard assets; 555 tracks the **"Social Capital"** that actually keeps communities together.</p>
+                    <p className="text-gray-700 text-base leading-relaxed">Relationships decay not because of single events, but because of the **Invisible Effort Gap.** Banks track hard assets, but 70% of human value exchange is social capital. 555 bridges this gap by creating the first quantifiable "Relationship HUD" for couples, roommates, and small communities.</p>
                 </section>
 
                 <section>
-                    <h2 className="text-2xl font-black mb-6 uppercase flex items-center gap-4 underline decoration-red-500 decoration-4">02. PROPRIETARY LOGIC</h2>
-                    <p className="text-gray-700 text-base mb-6">Our algorithm assigns value to "Soft Capital" based on contextual weights (e.g., a ride to the airport vs. paying for lunch). We create a real-time HUD for reciprocal altruism.</p>
-                    <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100 text-sm font-bold text-blue-800 flex justify-between items-center">
-                        <span>RE_SCORE = (CASH × 1) + (FAVOR × W) + (S_FACE × 1.5)</span>
+                    <h2 className="text-2xl font-black mb-6 uppercase flex items-center gap-4 underline decoration-red-500 decoration-4">02. PROPRIETARY ALGORITHM</h2>
+                    <p className="text-gray-700 text-base mb-6">Our Relationship Equilibrium (RE) engine assigns dynamic value to "Soft Capital." We don't just log tasks; we quantify effort. A ride to the airport has a higher weight than picking up coffee, adjusted by the user's Persona Lense.</p>
+                    <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100 text-sm font-bold text-blue-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <span className="bg-white px-4 py-2 rounded-xl shadow-sm italic">Value = (Cash × 1.0) + (Favor × W) + (Face_Save × 1.5)</span>
+                        <div className="flex items-center gap-2 text-[10px] uppercase opacity-60"><Shield size={12}/> Secure HUD</div>
                     </div>
                 </section>
 
                 <section className="bg-blue-900 text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
                     <div className="absolute top-0 left-0 p-4 opacity-5 rotate-12 group-hover:rotate-0 transition-transform"><Globe size={200}/></div>
-                    <h2 className="text-2xl font-black mb-4 uppercase flex items-center gap-4"><Globe size={24}/> 03. SCALING PLAN</h2>
-                    <p className="text-blue-100 text-base leading-relaxed mb-8">Launching in Singapore and Southeast Asia as a beachhead, we tap into existing "555" cultural memory. Our product is designed for "High Trust / Low Friction" economies where communal ledgering is already standard behavior.</p>
+                    <h2 className="text-2xl font-black mb-4 uppercase flex items-center gap-4"><Globe size={24}/> 03. GLOBAL SCALING</h2>
+                    <p className="text-blue-100 text-base leading-relaxed mb-8">SEA/Singapore is our beachhead. We tap into existing "555" cultural memory—a brand that already signals "trust" across generations. Our model is built for the "High Trust / Low Friction" community economies of the global south.</p>
                     <div className="grid grid-cols-2 gap-4 relative z-10">
-                        <div className="bg-white/10 p-5 rounded-2xl border border-white/10 text-center"><p className="text-2xl font-black mb-1">2025</p><p className="text-[10px] uppercase font-black tracking-widest text-blue-300">MVP Alpha</p></div>
-                        <div className="bg-white/10 p-5 rounded-2xl border border-white/10 text-center"><p className="text-2xl font-black mb-1">2026</p><p className="text-[10px] uppercase font-black tracking-widest text-blue-300">Marketplace</p></div>
+                        <div className="bg-white/10 p-5 rounded-2xl border border-white/10 text-center"><p className="text-2xl font-black mb-1">2025</p><p className="text-[10px] uppercase font-black tracking-widest text-blue-300">MVP Alpha Launch</p></div>
+                        <div className="bg-white/10 p-5 rounded-2xl border border-white/10 text-center"><p className="text-2xl font-black mb-1">2026</p><p className="text-[10px] uppercase font-black tracking-widest text-blue-300">Reward Marketplace</p></div>
                     </div>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-black mb-6 uppercase flex items-center gap-4 underline decoration-red-500 decoration-4">04. THE DATA MOAT</h2>
-                    <p className="text-gray-700 text-base">We are mapping the world's most valuable dataset: **The Trust Graph.** By tracking reciprocal altruism, we build a data layer that will power future community lending and decentralized identity scores.</p>
+                    <p className="text-gray-700 text-base leading-relaxed">We are mapping **The Trust Graph.** By tracking reciprocal altruism, we build a data layer that reveals high-reliability nodes within social networks. This has massive implications for future community lending and decentralized identity scores.</p>
                 </section>
 
                 <section className="pt-10 border-t-2 border-dashed border-gray-200">
-                    <h2 className="text-3xl font-black text-red-600 mb-4 uppercase tracking-tighter">Funding Strategy</h2>
-                    <p className="text-gray-500 text-sm leading-relaxed max-w-md">We are seeking $1.5M in Seed funding to hire core engineering leads and secure partnerships with regional e-wallets for our favor-substitution marketplace.</p>
+                    <h2 className="text-3xl font-black text-red-600 mb-4 uppercase tracking-tighter">Series Seed Ask</h2>
+                    <p className="text-gray-500 text-sm leading-relaxed max-w-lg mb-8">We are seeking $1.5M in Seed funding to hire core engineering leads and secure partnerships with regional e-wallets for our favor-substitution marketplace. Join us in digitizing gratitude.</p>
+                    <div className="flex gap-4">
+                        <button className="bg-blue-900 text-white px-6 py-2 rounded-full text-xs font-black uppercase">Request Full Deck</button>
+                        <button className="bg-gray-100 text-gray-500 px-6 py-2 rounded-full text-xs font-black uppercase">Financial Projections</button>
+                    </div>
                 </section>
               </div>
             </div>
@@ -373,24 +376,24 @@ const LandingPage = ({ onStart }) => {
         </div>
       )}
 
-      {/* Footer */}
+      {/* Landing Footer */}
       <footer className="bg-white py-24 border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
           <img src="/images/logo555.png" alt="555 Logo" className="h-16 w-auto mb-6 transform -rotate-3" onError={(e) => e.target.style.display='none'} />
           <div className="bg-red-600 text-white font-black text-3xl px-3 py-1 rounded shadow-lg transform -rotate-3 mb-6 uppercase tracking-tighter">555</div>
-          <p className="text-[10px] font-black text-gray-400 mb-10 uppercase tracking-[0.4em] font-mono">where respect meets the ledger.</p>
+          <p className="text-[10px] font-black text-gray-400 mb-10 uppercase tracking-[0.5em] font-mono">where respect meets the ledger.</p>
           <div className="flex flex-wrap justify-center gap-10 text-xs font-bold text-blue-900 uppercase tracking-widest">
             <button onClick={() => setShowStory(true)} className="hover:text-red-600 transition-colors">The Narrative</button>
             <button onClick={() => showInternalView('manual')} className="hover:text-red-600 transition-colors">User Manual</button>
             <button onClick={() => showInternalView('investor')} className="hover:text-red-600 transition-colors">Investor Center</button>
           </div>
-          <div className="mt-16 text-[10px] text-gray-300 font-mono flex items-center gap-2">
+          <div className="mt-16 text-[10px] text-gray-300 font-mono flex items-center gap-2 uppercase tracking-widest">
             <Globe size={10}/> LIVE ON HTTPS://555.SOCIALZ.LIFE/
           </div>
         </div>
       </footer>
 
-      {/* Roti Man Story Modal */}
+      {/* Narrative Legend Modal */}
       {showStory && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-blue-900/90 backdrop-blur-md animate-in fade-in duration-300" onClick={() => setShowStory(false)}>
           <div className="bg-white max-w-2xl w-full rounded-[2.5rem] shadow-2xl p-10 border-l-[2px] border-[#ff8787] relative overflow-hidden" onClick={e => e.stopPropagation()} style={{ backgroundImage: 'linear-gradient(#a5d8ff 1px, transparent 1px)', backgroundSize: '100% 2.5rem' }}>
@@ -398,10 +401,11 @@ const LandingPage = ({ onStart }) => {
             <div className="bg-red-600 text-white font-black text-xl px-2 py-0.5 rounded shadow-sm inline-block transform -rotate-2 mb-8 uppercase tracking-tighter">The Legend of 555</div>
             <div className="w-full mb-8 overflow-hidden rounded-2xl border-4 border-blue-900 shadow-xl bg-gray-50 aspect-video flex items-center justify-center">
                 <img src="/images/rotiman.png" alt="Roti Man riding a motorcycle with bread racks" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'} />
+                {!document.querySelector('img[src="/images/rotiman.png"]') && <span className="text-gray-400 font-mono text-sm italic">Legacy Image Placeholder</span>}
             </div>
             <div className="font-mono text-blue-900 space-y-6 text-lg leading-relaxed">
                 <p>Before apps and instant transfers, community trust lived in a small yellow <strong>555 notebook</strong> carried by the Roti Man.</p>
-                <p>He was a local hero on a motorcycle, his racks overflowing with snacks. He jotted debts with a pencil, and families honored those IOUs because the relationship was the collateral.</p>
+                <p>He was a neighborhood staple on a motorcycle, his racks overflowing with snacks. He jotted debts with a pencil, and families honored those IOUs because the relationship was the collateral. No receipts, just unshakeable honor.</p>
                 <p>555 digitizes this heritage—bringing back the era where a bond of respect mattered more than a credit score.</p>
             </div>
           </div>
@@ -432,10 +436,9 @@ const OnboardingFlow = ({ onComplete }) => {
         
         {step === 1 && (
           <div className="text-center space-y-6 animate-in fade-in slide-in-from-bottom duration-500">
-            <img src="/images/logo555.png" alt="555 Logo" className="h-20 w-auto mx-auto mb-4" onError={(e) => e.target.style.display='none'} />
             <div className="bg-red-600 text-white font-black text-6xl px-4 py-2 rounded shadow-xl transform -rotate-3 mb-6 inline-block uppercase">555</div>
             <h2 className="text-3xl font-black text-blue-900 uppercase tracking-tighter leading-none">The Handshake</h2>
-            <p className="text-gray-500 font-mono text-sm leading-relaxed px-4">Establishing a shared ledger of trust between you and your partner.</p>
+            <p className="text-gray-500 font-mono text-sm leading-relaxed px-4 italic">"Establishing a shared ledger of trust between you and your partner."</p>
             <button onClick={() => setStep(2)} className="w-full bg-blue-900 text-white py-4 rounded-2xl font-black text-xl shadow-lg flex items-center justify-center gap-2 uppercase tracking-tighter active:scale-95 transition-transform">Choose Persona <ArrowRight size={20} /></button>
           </div>
         )}
@@ -486,7 +489,7 @@ const OnboardingFlow = ({ onComplete }) => {
   );
 };
 
-// Icon Component
+// Custom Icon Logic
 const BeerIcon = ({ size, className }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M17 11h1a3 3 0 0 1 0 6h-1" /><path d="M7 21h10" /><path d="M7 3h10" /><path d="M12 3v18" /><path d="M7 11h10" /><path d="M7 16h10" />
@@ -542,27 +545,27 @@ const DashboardApp = ({ onLogout }) => {
 
   return (
     <div className="min-h-screen bg-[#fdfbd4] pb-24 relative overflow-x-hidden">
-      {/* Scrollable Settle Modal FIX */}
+      {/* FULL SCREEN SCROLLABLE SETTLE MODAL */}
       {settleItem && (
-        <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/80 backdrop-blur-sm px-4 overflow-hidden">
-          <div className="w-full max-w-md bg-white rounded-t-[3rem] animate-in slide-in-from-bottom duration-300 max-h-[92vh] flex flex-col shadow-2xl">
-            {/* Modal Header */}
-            <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-[3rem]">
+        <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/80 backdrop-blur-md px-4 overflow-hidden">
+          <div className="w-full max-w-md bg-white rounded-t-[3rem] animate-in slide-in-from-bottom duration-300 max-h-[94vh] flex flex-col shadow-2xl relative">
+            {/* Modal Header (Fixed) */}
+            <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-[3rem] z-20">
               <h3 className="text-2xl font-black text-blue-900 uppercase tracking-tighter">Balance Item</h3>
               <button onClick={() => setSettleItem(null)} className="p-2 bg-gray-100 rounded-full hover:bg-red-50 transition-colors"><X size={20}/></button>
             </div>
             
-            {/* Modal Content - Scrollable FIX */}
-            <div className="p-8 overflow-y-auto flex-1 space-y-6 pb-20 custom-scrollbar">
+            {/* Modal Content Area (Scrollable) */}
+            <div className="p-8 overflow-y-auto flex-1 space-y-6 pb-24">
               {settleStep === 1 ? (
                 <>
-                  <div className="bg-blue-50 p-6 rounded-[2rem] border-2 border-blue-100 relative overflow-hidden">
+                  <div className="bg-blue-50 p-6 rounded-[2rem] border-2 border-blue-100 relative overflow-hidden shadow-inner">
                     <div className="absolute top-0 right-0 p-4 opacity-5"><Scale size={100}/></div>
-                    <p className="text-[10px] uppercase font-black text-blue-400 mb-2 tracking-widest">Outstanding Debt</p>
+                    <p className="text-[10px] uppercase font-black text-blue-400 mb-2 tracking-widest">Active Debt</p>
                     <p className="text-xl font-black text-blue-900 leading-tight">"{settleItem.title}"</p>
                     <p className="text-red-500 font-bold font-mono mt-2">{settleItem.amount}.00 Credits</p>
                   </div>
-                  <p className="text-gray-500 font-mono text-sm italic leading-relaxed">"How do you wish to acknowledge this debt?"</p>
+                  <p className="text-gray-500 font-mono text-sm italic leading-relaxed">"How do you wish to acknowledge this debt in the 555 book?"</p>
                   <div className="grid gap-4">
                     <button onClick={() => setSettleStep(2)} className="w-full bg-blue-900 text-white py-5 rounded-[1.5rem] font-black text-lg uppercase tracking-tighter flex justify-between px-8 items-center shadow-lg group active:scale-95 transition-transform">
                       Offer a Favor <ChevronRight className="group-hover:translate-x-1 transition-transform" />
@@ -572,20 +575,20 @@ const DashboardApp = ({ onLogout }) => {
                 </>
               ) : settleStep === 2 ? (
                 <>
-                  <button onClick={() => setSettleStep(1)} className="text-xs font-bold text-blue-500 flex items-center gap-1 mb-4 uppercase tracking-[0.2em]">← Back to Options</button>
+                  <button onClick={() => setSettleStep(1)} className="text-xs font-bold text-blue-500 flex items-center gap-1 mb-4 uppercase tracking-[0.2em] font-black">← Back to Options</button>
                   <div className="space-y-4">
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Choose from Your Favor Catalog</p>
-                    <div className="grid gap-3">
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Select from Your Catalog</p>
+                    <div className="grid gap-4">
                       {myCatalog.map(f => (
                         <button 
                           key={f.id} 
                           onClick={() => setSettleStep(3)}
-                          className="w-full p-5 bg-white border-2 border-gray-50 rounded-2xl flex items-center gap-4 text-left hover:border-blue-900 hover:shadow-md transition-all active:scale-[0.98] group"
+                          className="w-full p-6 bg-white border-2 border-gray-100 rounded-2xl flex items-center gap-5 text-left hover:border-blue-900 hover:shadow-md transition-all active:scale-[0.98] group"
                         >
-                          <span className="text-2xl group-hover:scale-110 transition-transform">{f.icon}</span>
+                          <span className="text-3xl group-hover:scale-110 transition-transform">{f.icon}</span>
                           <div className="flex-1">
                             <p className="font-black text-blue-900 uppercase tracking-tight text-sm">{f.title}</p>
-                            <p className="text-[10px] text-gray-400 font-mono tracking-widest mt-0.5">Weighted Value: {f.weight} Face Credits</p>
+                            <p className="text-[10px] text-gray-400 font-mono tracking-widest mt-1">Weighted: {f.weight} Face Credits</p>
                           </div>
                         </button>
                       ))}
@@ -593,11 +596,11 @@ const DashboardApp = ({ onLogout }) => {
                   </div>
                 </>
               ) : (
-                <div className="text-center py-8 space-y-8">
+                <div className="text-center py-10 space-y-8">
                   <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto shadow-sm"><Check className="text-green-600" size={48} /></div>
                   <div>
                     <h4 className="text-3xl font-black text-blue-900 uppercase tracking-tighter mb-2 leading-none">Proposal Sent!</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed px-6 italic font-mono">Your partner has been notified. Once they acknowledge the favor, the ledger will update.</p>
+                    <p className="text-gray-500 text-sm leading-relaxed px-6 italic font-mono">Juliet has been notified. Once she acknowledges the favor, the equilibrium HUD will rebalance.</p>
                   </div>
                   <button onClick={() => setSettleItem(null)} className="w-full bg-blue-900 text-white py-5 rounded-[1.5rem] font-black text-lg uppercase tracking-tighter shadow-xl active:scale-95 transition-transform">Return to Book</button>
                 </div>
@@ -607,7 +610,7 @@ const DashboardApp = ({ onLogout }) => {
         </div>
       )}
 
-      {/* Main Dashboard UI */}
+      {/* DASHBOARD HEADER */}
       <header className="bg-white px-6 pt-10 pb-6 border-b border-gray-100 rounded-b-[3rem] shadow-sm">
         <div className="flex justify-between items-center mb-10">
             <div className="flex items-center gap-3">
@@ -623,12 +626,12 @@ const DashboardApp = ({ onLogout }) => {
             </div>
         </div>
         
-        {/* RE HUD */}
+        {/* RELATIONSHIP HUD */}
         <div className="bg-blue-900 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 p-4 opacity-5"><Scale size={120}/></div>
           <div className="relative z-10 flex justify-between items-end">
             <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-300 mb-2">Relationship HUD</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-300 mb-2">Relationship Equilibrium</p>
                 <h2 className="text-5xl font-black tracking-tighter">+35.00</h2>
             </div>
             <div className="text-right">
@@ -638,20 +641,20 @@ const DashboardApp = ({ onLogout }) => {
         </div>
       </header>
 
-      {/* View Switcher */}
+      {/* WALL/VAULT SWITCHER */}
       <div className="flex p-4 gap-4">
         <button onClick={() => setActiveTab('wall')} className={`flex-1 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all ${activeTab === 'wall' ? 'bg-blue-900 text-white shadow-xl translate-y-[-2px]' : 'bg-white text-gray-400 border border-gray-100 hover:bg-gray-50'}`}>Public Wall</button>
         <button onClick={() => setActiveTab('vault')} className={`flex-1 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all ${activeTab === 'vault' ? 'bg-gray-900 text-white shadow-xl translate-y-[-2px]' : 'bg-white text-gray-400 border border-gray-100 hover:bg-gray-50'}`}>The Vault</button>
       </div>
 
-      {/* Feed */}
+      {/* FEED CONTENT */}
       <main className="px-4 pb-20">
         <div className="mb-4 px-2 flex justify-between items-center"><h3 className="font-black text-blue-900 uppercase tracking-[0.3em] text-[10px] opacity-40">Recent Activity</h3></div>
         <div className="space-y-4">
             {activeTab === 'wall' ? (
                 <>
                     <EntryCard entry={{ id: 1, type: 'hard', title: 'Lunch @ Hawker Center', amount: -15.00, date: '2h ago' }} isVault={false} />
-                    <EntryCard entry={{ id: 3, type: 'soft', title: 'Finals Project PPT', amount: 12, date: 'Yesterday' }} isVault={false} />
+                    <EntryCard entry={{ id: 3, type: 'soft', title: 'PPT Assistance', amount: 12, date: 'Yesterday' }} isVault={false} />
                 </>
             ) : (
                 <EntryCard entry={{ id: 2, type: 'face', title: 'Silent Laundry Rescue', amount: 8, date: '3h ago' }} isVault={true} />
@@ -659,37 +662,37 @@ const DashboardApp = ({ onLogout }) => {
         </div>
       </main>
 
-      {/* Floating Action Menu */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+      {/* FIXED FAB MENU FIX */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-[110]">
         {showAddMenu && (
-          <div className="bg-white p-3 rounded-3xl shadow-2xl mb-4 border-2 border-gray-50 animate-in slide-in-from-bottom-4 flex gap-3 backdrop-blur-md bg-white/90">
-            <button className="p-4 bg-blue-50 rounded-2xl text-blue-900 hover:bg-blue-100 transition-colors active:scale-90 flex flex-col items-center gap-1">
-                <ArrowUpRight size={24} />
-                <span className="text-[8px] font-black uppercase">I Owe</span>
+          <div className="bg-white p-3 rounded-3xl shadow-2xl mb-6 border-2 border-gray-100 animate-in slide-in-from-bottom-4 flex gap-4 backdrop-blur-md bg-white/95">
+            <button className="p-5 bg-blue-50 rounded-2xl text-blue-900 hover:bg-blue-100 transition-all active:scale-90 flex flex-col items-center gap-1 border border-blue-100">
+                <ArrowUpRight size={28} />
+                <span className="text-[10px] font-black uppercase tracking-widest">I Owe</span>
             </button>
-            <button className="p-4 bg-red-50 rounded-2xl text-red-600 hover:bg-red-100 transition-colors active:scale-90 flex flex-col items-center gap-1">
-                <ArrowDownLeft size={24} />
-                <span className="text-[8px] font-black uppercase tracking-tighter">They Owe</span>
+            <button className="p-5 bg-red-50 rounded-2xl text-red-600 hover:bg-red-100 transition-all active:scale-90 flex flex-col items-center gap-1 border border-red-100">
+                <ArrowDownLeft size={28} />
+                <span className="text-[10px] font-black uppercase tracking-tighter">They Owe</span>
             </button>
-            <button className="p-4 bg-gray-900 rounded-2xl text-white hover:bg-black transition-colors active:scale-90 flex flex-col items-center gap-1">
-                <EyeOff size={24} />
-                <span className="text-[8px] font-black uppercase">Vault</span>
+            <button className="p-5 bg-gray-900 rounded-2xl text-white hover:bg-black transition-all active:scale-90 flex flex-col items-center gap-1 shadow-lg">
+                <EyeOff size={28} />
+                <span className="text-[10px] font-black uppercase">Vault</span>
             </button>
           </div>
         )}
         <button 
           onClick={() => setShowAddMenu(!showAddMenu)} 
-          className={`w-16 h-16 rounded-full flex items-center justify-center text-white shadow-2xl transition-all active:scale-90 ${showAddMenu ? 'bg-red-500 rotate-45' : 'bg-blue-900 shadow-blue-900/20'}`}
+          className={`w-20 h-20 rounded-full flex items-center justify-center text-white shadow-2xl transition-all active:scale-90 z-[120] ${showAddMenu ? 'bg-red-600 rotate-45 scale-110 shadow-red-500/40' : 'bg-blue-900 shadow-blue-900/30'}`}
         >
-          <Plus size={32} />
+          <Plus size={36} strokeWidth={3} />
         </button>
+        {showAddMenu && <div className="fixed inset-0 bg-blue-900/20 backdrop-blur-[2px] -z-10" onClick={() => setShowAddMenu(false)}></div>}
       </div>
     </div>
   );
 };
 
-/** * MAIN APP CONTAINER 
- */
+/** * MAIN HUB */
 export default function App() {
   const [currentView, setCurrentView] = useState('landing');
   return (
