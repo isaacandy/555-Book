@@ -199,7 +199,7 @@ const LandingPage = ({ onStart }) => {
                 { name: 'Young Couple', icon: '🌶️', favor: 'Silent Apology', reward: 'Massage Protocol' },
                 { name: 'The Real Ones', icon: '🍻', favor: 'Phone Guard', reward: 'Designated Hero' }
               ].map((p, i) => (
-                <div key={i} className={`group p-8 rounded-3xl border-2 transition-all cursor-pointer ${i === 1 ? 'border-blue-900 bg-blue-50 shadow-xl scale-105' : 'border-gray-100 hover:border-blue-900'}`}>
+                <div key={i} className={`group p-8 rounded-3xl border-2 transition-all cursor-pointer ${i === 1 ? 'border-blue-900 bg-blue-50 shadow-xl scale-105' : 'border-gray-100 hover:border-blue-200 hover:bg-gray-50'}`}>
                   <div className="text-5xl mb-6">{p.icon}</div>
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 uppercase tracking-tighter">{p.name}</h3>
                   <ul className="text-left space-y-3 text-gray-500 text-sm font-mono">
@@ -292,7 +292,7 @@ const LandingPage = ({ onStart }) => {
                     <div className="space-y-6">
                         <div className="border-t border-white/10 pt-4">
                             <p className="text-xs text-blue-400 uppercase font-bold mb-2 tracking-widest">Competitive Moat</p>
-                            <p className="font-semibold text-sm">Cultural Nostalgia + Localized "Thank You" Economics.</p>
+                            <p className="font-semibold text-sm">Nostalgic Branding + Client-Side E2EE Encryption.</p>
                         </div>
                         <div className="border-t border-white/10 pt-4">
                             <p className="text-xs text-blue-400 uppercase font-bold mb-2 tracking-widest">Revenue Roadmap</p>
@@ -503,6 +503,7 @@ const DashboardApp = ({ onLogout }) => {
   const [showAddMenu, setShowAddMenu] = useState(false);
   const [settleItem, setSettleItem] = useState(null);
   const [settleStep, setSettleStep] = useState(1);
+  const [activeEntryForm, setActiveEntryForm] = useState(null); // 'owe', 'they_owe', 'vault'
 
   const myCatalog = [
     { id: 'c1', title: 'Cook a Fancy Dinner', icon: '🍳', weight: 5 },
@@ -545,6 +546,50 @@ const DashboardApp = ({ onLogout }) => {
 
   return (
     <div className="min-h-screen bg-[#fdfbd4] pb-24 relative overflow-x-hidden">
+      
+      {/* ------------------------------ */}
+      {/* LOGGING ENTRY MODAL (NEW FIX) */}
+      {/* ------------------------------ */}
+      {activeEntryForm && (
+        <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-blue-900/40 backdrop-blur-md animate-in fade-in duration-200">
+           <div className="bg-white w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl relative border-t-8 border-red-600 overflow-hidden">
+              <button onClick={() => setActiveEntryForm(null)} className="absolute top-6 right-6 text-gray-300 hover:text-red-500"><X /></button>
+              
+              <div className="text-center mb-8">
+                 <div className={`w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 ${activeEntryForm === 'vault' ? 'bg-black text-white' : activeEntryForm === 'owe' ? 'bg-blue-50 text-blue-900' : 'bg-red-50 text-red-600'}`}>
+                    {activeEntryForm === 'owe' ? <ArrowUpRight size={32}/> : activeEntryForm === 'they_owe' ? <ArrowDownLeft size={32}/> : <EyeOff size={32}/>}
+                 </div>
+                 <h3 className="text-2xl font-black text-blue-900 uppercase tracking-tighter">
+                   {activeEntryForm === 'owe' ? 'New "I Owe"' : activeEntryForm === 'they_owe' ? 'New "They Owe"' : 'New Vault Entry'}
+                 </h3>
+                 <p className="text-gray-400 font-mono text-xs mt-2 italic">Ref: Draft Entry #1029</p>
+              </div>
+
+              <div className="space-y-6">
+                 <div>
+                    <label className="text-[10px] font-black uppercase text-blue-300 tracking-widest block mb-2 px-1">Description</label>
+                    <input type="text" placeholder="e.g. Dinner @ Mama's" className="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl p-4 font-bold text-blue-900 outline-none focus:border-blue-900 transition-colors" />
+                 </div>
+                 <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <label className="text-[10px] font-black uppercase text-blue-300 tracking-widest block mb-2 px-1">Value</label>
+                        <input type="number" placeholder="0.00" className="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl p-4 font-bold text-blue-900 outline-none" />
+                    </div>
+                    <div>
+                        <label className="text-[10px] font-black uppercase text-blue-300 tracking-widest block mb-2 px-1">Category</label>
+                        <select className="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl p-4 font-bold text-blue-900 outline-none">
+                            <option>Food</option>
+                            <option>Household</option>
+                            <option>Favors</option>
+                        </select>
+                    </div>
+                 </div>
+                 <button onClick={() => setActiveEntryForm(null)} className="w-full bg-blue-900 text-white py-5 rounded-2xl font-black uppercase tracking-tighter shadow-xl active:scale-95 transition-transform">Sign Entry</button>
+              </div>
+           </div>
+        </div>
+      )}
+
       {/* FULL SCREEN SCROLLABLE SETTLE MODAL */}
       {settleItem && (
         <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/80 backdrop-blur-md px-4 overflow-hidden">
@@ -662,21 +707,30 @@ const DashboardApp = ({ onLogout }) => {
         </div>
       </main>
 
-      {/* FIXED FAB MENU FIX */}
+      {/* FIXED FAB MENU FIX - NOW WITH CLICK HANDLERS */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-[110]">
         {showAddMenu && (
           <div className="bg-white p-3 rounded-3xl shadow-2xl mb-6 border-2 border-gray-100 animate-in slide-in-from-bottom-4 flex gap-4 backdrop-blur-md bg-white/95">
-            <button className="p-5 bg-blue-50 rounded-2xl text-blue-900 hover:bg-blue-100 transition-all active:scale-90 flex flex-col items-center gap-1 border border-blue-100">
+            <button 
+              onClick={() => { setActiveEntryForm('owe'); setShowAddMenu(false); }}
+              className="p-5 bg-blue-50 rounded-2xl text-blue-900 hover:bg-blue-100 transition-all active:scale-90 flex flex-col items-center gap-1 border border-blue-100"
+            >
                 <ArrowUpRight size={28} />
                 <span className="text-[10px] font-black uppercase tracking-widest">I Owe</span>
             </button>
-            <button className="p-5 bg-red-50 rounded-2xl text-red-600 hover:bg-red-100 transition-all active:scale-90 flex flex-col items-center gap-1 border border-red-100">
+            <button 
+              onClick={() => { setActiveEntryForm('they_owe'); setShowAddMenu(false); }}
+              className="p-5 bg-red-50 rounded-2xl text-red-600 hover:bg-red-100 transition-all active:scale-90 flex flex-col items-center gap-1 border border-red-100"
+            >
                 <ArrowDownLeft size={28} />
                 <span className="text-[10px] font-black uppercase tracking-tighter">They Owe</span>
             </button>
-            <button className="p-5 bg-gray-900 rounded-2xl text-white hover:bg-black transition-all active:scale-90 flex flex-col items-center gap-1 shadow-lg">
+            <button 
+              onClick={() => { setActiveEntryForm('vault'); setShowAddMenu(false); }}
+              className="p-5 bg-gray-900 rounded-2xl text-white hover:bg-black transition-all active:scale-90 flex flex-col items-center gap-1 shadow-lg"
+            >
                 <EyeOff size={28} />
-                <span className="text-[10px] font-black uppercase">Vault</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Vault</span>
             </button>
           </div>
         )}
